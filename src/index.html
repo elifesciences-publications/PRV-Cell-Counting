@@ -1,0 +1,127 @@
+<!-- Include dependencies -->
+
+<script src="./openseadragon/openseadragon.min.js"></script>
+<script src="./svg-overlay-master/openseadragon-svg-overlay.js"></script>
+<script src="./openseadragonrgb-master/dist/openseadragonrgb.js"></script>
+
+<script src="./handsontable-0.19.0/handsontable-0.19.0/dist/handsontable.full.min.js"></script>
+<script src="./d3/d3.min.js"></script>
+
+<link rel="stylesheet" media="screen" href="./handsontable-0.19.0/handsontable-0.19.0/dist/handsontable.full.css">
+<link rel="stylesheet" media="screen" href="./histo_style.css">
+
+
+<!-- Gui -->
+<head>
+    <title>PRV Analysis App</title>
+</head>
+
+<div id="maincontent">
+    <div id="top_content">
+        <div id="deepzoom_file_loader_conglomerate" class="left_side">
+            <input id="fileDialog" type="file" class="invisible_input" />
+            <button id="fileDialog_visualized" type="button" class="visible_input">Load DeepZoom Image</button>
+        </div>
+        
+        <div id="xml_file_loader_conglomerate" class="left_side">
+            <input id="load_cell_counting_xml_invisible_input" type="file" class="invisible_input" />
+            <button id="load_cell_counting_xml_button" type="button" class="visible_input">Load Cell Counting XML Data</button>
+        </div>
+        
+        <div id="save_button_conglomerate" class="right_side">
+            <input id="save_button" type="file" class="invisible_input" nwsaveas />
+            <button id="save_button_visualized" type="button" class="visible_input">Save data to text file</button>
+        </div>
+    </div>    
+    <div id="bottom_content">
+        <div id="left_side_main" class="left_side">
+            <div id="openseadragon1"></div>
+        </div>
+        <div id="right_side">
+            <div id="right_side_content">
+                
+                <select id="section_combobox" class="right_side_combo_box">
+                    <option value="No sections defined">No sections defined</option>
+                </select>
+                <button id="add_section" type="button" class="right_side_inputs">Add section</button>
+                
+                <br>
+                
+                <div id="section_status_info" class="info_text">
+                    
+                    <div id="section_boundary_status_red">
+                        <image src="./images/small_red_cross.png" />
+                        You have not yet defined a section boundary.
+                    </div>
+                    <div id="section_boundary_status_green" class="invisible_warning">
+                        <image src="./images/small_green_check.png" />
+                        A section boundary has been defined.
+                    </div>
+                    
+                    <p>
+                    
+                    <div id="section_vertical_reference_status_red">
+                        <image src="./images/small_red_cross.png" />
+                        You have not yet defined a vertical reference line.
+                    </div>
+                    <div id="section_vertical_reference_status_green" class="invisible_warning">
+                        <image src="./images/small_green_check.png" />
+                        A vertical reference line has been defined.
+                    </div>
+                    
+                    <p>
+                    
+                    <div id="section_horizontal_reference_status_red">
+                        <image src="./images/small_red_cross.png" />
+                        You have not yet defined a horizontal reference line.
+                    </div>
+                    <div id="section_horizontal_reference_status_green" class="invisible_warning">
+                        <image src="./images/small_green_check.png" />
+                        A horizontal reference line has been defined.
+                    </div>
+                    
+                </div>
+                
+                <!-- THE FOLLOWING PORTION OF THE UI HAS BEEN DEPRECATED -->
+                <!--
+                <div class="info_text">
+                    <br>Where is this section in the image? (units of pixels)<br>
+                </div>
+                Left: <input type="text" id="section_left" class="right_side_textboxes" readonly /><br>
+                Top: <input type="text" id="section_top" class="right_side_textboxes" readonly /><br>
+                Width: <input type="text" id="section_width" class="right_side_textboxes" readonly /><br>
+                Height: <input type="text" id="section_height" class="right_side_textboxes" readonly /><br>
+                
+                <div class="info_text">
+                    <br>Defines two reference points for this section. The uppermost is considered the "origin". (units are in pixels within the boundaries of the section)<br>
+                </div>
+                X origin: <input type="text" id="x_origin" class="right_side_textboxes" readonly /><br>
+                Y origin: <input type="text" id="y_origin" class="right_side_textboxes" readonly /><br>
+                Second X: <input type="text" id="x_second_ref" class="right_side_textboxes" readonly /><br>
+                Second Y: <input type="text" id="y_second_ref" class="right_side_textboxes" readonly /><br>
+                -->
+                
+                <div class="info_text">
+                    <br>Define the AP location, with respect to bregma, of this section. (Units are in mm)<br>
+                </div>
+                Z coordinate: <input type="text" id="z_coord" class="right_side_textboxes" /><br>
+                
+                <div class="info_text">
+                    <br>Positions of all defined cells for this tissue section will appear here. (Units in mm with respect to origin)<br>
+                </div>
+                <button id="remove_cell" type="button" class="right_side_inputs">Remove most recent cell</button>
+                <div id="spreadsheet"></div>
+            </div>
+        </div>
+    </div>
+    <div id="footer_content">
+        <label><input type="radio" name="mode_toggle" checked="checked"><span>Browse Only</span></label>
+        <label><input type="radio" name="mode_toggle"><span>Set Boundaries</span></label>
+        <label><input type="radio" name="mode_toggle"><span>Set Vertical Reference</span></label>
+        <label><input type="radio" name="mode_toggle"><span>Set Horizontal Reference</span></label>
+        <label><input type="radio" name="mode_toggle"><span>Define Cells</span></label>
+    </div>
+</div>
+
+<script src="./main.js"></script>
+
