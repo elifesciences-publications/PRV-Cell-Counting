@@ -3,4 +3,4 @@ This software was written for the Texas Biomedical Device Center at UT Dallas by
 
 Originally, when this software was being developed, images were being scanned using a Hamamatsu Nanozoom. Images were converted from the native Hamamatsu format to the Microsoft DeepZoom format using libvips (https://jcupitt.github.io/libvips/). Any whole-slide scanner can be used to take images, as long as you can then convert the image files to the DeepZoom format. This should not be difficult using the aforementioned libvips software.
 
-The main release of this software can be found in the releases tab. Any questions can be directed to David Pruitt, the author of this software.
+The main release of this software can be found in the releases tab (or at this link: https://github.com/davepruitt/PRV-Cell-Counting/releases). Any questions can be directed to David Pruitt, the author of this software.
